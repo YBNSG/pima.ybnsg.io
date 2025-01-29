@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIMA - Control de Especies Invasoras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 20px 0;
+            opacity: 1; transition: opacity 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #388e3c;
+            padding: 15px 0;
+            position: fixed; background: rgba(56, 142, 60, 0.9);
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 15px;
+        }
+        nav a:hover {
+            background-color: #2e7d32;
+            border-radius: 5px;
+            transform: scale(1.05);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 1s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        footer {
+            text-align: center;
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            body { padding-top: 80px; }
+            nav {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            .container {
+                width: 95%;
+                margin-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="margin-top: 80px; padding-top: 20px;">
+        <h1>PIMA</h1>
+        <p>Eliminando invasoras, protegiendo el futuro</p>
+    </header>
+    <nav>
+        <a href="propuesta.html">Propuesta de Valor</a>
+        <a href="entorno.html">Entorno</a>
+        <a href="sobre.html">Sobre Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="productos.html">Productos</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="plan_marketing.html">Plan de Marketing</a>
+    </nav>
+    
+    <div class="container" id="sobre">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos una empresa especializada en la eliminación de especies invasoras para restaurar el equilibrio ecológico y proteger ecosistemas. Aprovechamos los recursos obtenidos para su comercialización en diferentes industrias.</p>
+    </div>
+    <div class="container" id="servicios">
+        <h2>Servicios</h2>
+        <ul>
+            <li>Control y eliminación de especies invasoras</li>
+            <li>Asesoramiento medioambiental</li>
+            <li>Seguimiento y monitoreo de ecosistemas</li>
+        </ul>
+    </div>
+    <div class="container" id="productos">
+        <h2>Productos</h2>
+        <ul>
+            <li>Pieles y cueros de especies controladas</li>
+            <li>Carne y derivados de fauna invasora</li>
+            <li>Muestras biológicas para investigación</li>
+        </ul>
+    </div>
+    <div class="container" id="propuesta">
+        <h2>Propuesta de Valor</h2>
+        <p>Nuestra propuesta de valor se basa en la sostenibilidad y el compromiso con la biodiversidad, asegurando soluciones efectivas y responsables para el control de especies invasoras.</p>
+    </div>
+    <div class="container" id="entorno">
+        <h2>Entorno</h2>
+        <p>Información sobre el impacto ambiental y ecológico de las especies invasoras y las acciones de PIMA para mitigar estos efectos.</p>
+    </div>
+    <div class="container" id="contacto">
+        <h2>Contacto</h2>
+        <p>Correo: contacto@pima.com</p>
+        <p>Teléfono: +34 123 456 789</p>
+        <p>Ubicación: Madrid, España</p>
+    </div>
+    <footer>
+        <p>&copy; 2025 PIMA - Control de Especies Invasoras</p>
+    </footer>
+</body>
+</html>
