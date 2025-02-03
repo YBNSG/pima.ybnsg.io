@@ -44,6 +44,12 @@
             background-color: #2e7d32;
             color: white;
         }
+        .fijo {
+            background-color: #e0f2f1;
+        }
+        .variable {
+            background-color: #ffebee;
+        }
         footer {
             text-align: center;
             background-color: #2e7d32;
@@ -52,6 +58,7 @@
             margin-top: 20px;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -61,15 +68,15 @@
     <div class="container">
         <h2>Costos Operativos Anuales</h2>
         <table>
-            <tr><th>Concepto</th><th>Monto (€)</th></tr>
-            <tr><td>Personal (Técnicos y Administrativos)</td><td>120,000</td></tr>
-            <tr><td>Equipamiento y Materiales</td><td>30,000</td></tr>
-            <tr><td>Transporte (Vehículos, Combustible, Mantenimiento)</td><td>20,000</td></tr>
-            <tr><td>Infraestructura (Alquiler, Servicios Públicos)</td><td>25,000</td></tr>
-            <tr><td>Licencias y Seguros</td><td>15,000</td></tr>
-            <tr><td>Marketing y Publicidad</td><td>10,000</td></tr>
-            <tr><td>Gestión de Residuos y Procesamiento de Materias Primas</td><td>20,000</td></tr>
-            <tr><th>Total Costos Operativos</th><th>240,000</th></tr>
+            <tr><th>Concepto</th><th>Monto (€)</th><th>Tipo</th></tr>
+            <tr class="fijo"><td>Personal (Técnicos y Administrativos)</td><td>120,000</td><td>Fijo</td></tr>
+            <tr class="fijo"><td>Infraestructura (Alquiler, Servicios Públicos)</td><td>25,000</td><td>Fijo</td></tr>
+            <tr class="fijo"><td>Licencias y Seguros</td><td>15,000</td><td>Fijo</td></tr>
+            <tr class="fijo"><td>Marketing y Publicidad</td><td>10,000</td><td>Fijo</td></tr>
+            <tr class="variable"><td>Equipamiento y Materiales</td><td>30,000</td><td>Variable</td></tr>
+            <tr class="variable"><td>Transporte</td><td>20,000</td><td>Variable</td></tr>
+            <tr class="variable"><td>Gestión de Residuos</td><td>20,000</td><td>Variable</td></tr>
+            <tr><th>Total Costos Operativos</th><th>240,000</th><th></th></tr>
         </table>
         
         <h2>Ingresos Proyectados</h2>
@@ -81,19 +88,59 @@
             <tr><th>Margen de Beneficio</th><th>185,000</th></tr>
         </table>
         
-        <h2>Ajuste de Precios</h2>
+        <h2>Análisis de Rentabilidad</h2>
         <table>
-            <tr><th>Servicio o Producto</th><th>Precio Anterior (€)</th><th>Nuevo Precio (€)</th></tr>
-            <tr><td>Eliminación de Especies Invasoras</td><td>Desde 500€/ha</td><td>Desde 400€/ha (mínimo 5 ha)</td></tr>
-            <tr><td>Gestión y Comercialización de Subproductos</td><td>Desde 300€/lote</td><td>Desde 250€/lote (mínimo 10 lotes)</td></tr>
-            <tr><td>Asesoramiento Ambiental</td><td>150€/consulta</td><td>120€/consulta (mínimo 10 consultas anuales)</td></tr>
-            <tr><td>Monitoreo y Prevención</td><td>Desde 200€/ha</td><td>Desde 180€/ha (mínimo 10 ha)</td></tr>
-            <tr><td>Reforestación y Restauración Ecológica</td><td>Desde 800€/ha</td><td>Desde 700€/ha (mínimo 5 ha)</td></tr>
-            <tr><td>Pieles y Cueros</td><td>50€/unidad</td><td>40€/unidad (mínimo 50 unidades)</td></tr>
-            <tr><td>Carne y Subproductos Alimenticios</td><td>30€/kg</td><td>25€/kg (mínimo 100 kg)</td></tr>
-            <tr><td>Muestras Biológicas</td><td>100€/muestra</td><td>85€/muestra (mínimo 20 muestras)</td></tr>
-            <tr><td>Fertilizantes Naturales</td><td>20€/kg</td><td>15€/kg (mínimo 200 kg)</td></tr>
+            <tr><th>Concepto</th><th>Monto (€)</th></tr>
+            <tr><td>Punto de Equilibrio</td><td>282 unidades</td></tr>
+            <tr><td>Ingresos Proyectados en 5 años</td><td>684,000</td></tr>
         </table>
+        
+        <h2>Análisis de Riesgos Financieros</h2>
+        <table>
+            <tr><th>Riesgo</th><th>Descripción</th></tr>
+            <tr><td>Variabilidad en la demanda</td><td>Los contratos pueden fluctuar dependiendo de regulaciones ambientales y necesidades del mercado.</td></tr>
+            <tr><td>Fluctuaciones en costos operativos</td><td>Los precios de equipamiento y transporte pueden variar inesperadamente.</td></tr>
+            <tr><td>Cambios regulatorios</td><td>Modificaciones en la legislación pueden afectar la operatividad del negocio.</td></tr>
+        </table>
+        
+        <h2>Proyección de Crecimiento</h2>
+        <table>
+            <tr><th>Año</th><th>Ingresos Estimados (€)</th></tr>
+            <tr><td>2025</td><td>425,000</td></tr>
+            <tr><td>2026</td><td>467,500</td></tr>
+            <tr><td>2027</td><td>514,250</td></tr>
+            <tr><td>2028</td><td>565,675</td></tr>
+            <tr><td>2029</td><td>622,242</td></tr>
+        </table>
+        
+        <h2>Gráfica de Costos e Ingresos</h2>
+        <canvas id="finanzasChart"></canvas>
+        <script>
+            var ctx = document.getElementById('finanzasChart').getContext('2d');
+            var finanzasChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Costos Fijos', 'Costos Variables', 'Ingresos Totales', 'Margen de Beneficio'],
+                    datasets: [{
+                        label: 'Montos en €',
+                        data: [170000, 50000, 425000, 185000],
+                        backgroundColor: ['#e74c3c', '#ffcc00', '#2ecc71', '#3498db']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+        
+        <h2>Coste Unitario</h2>
+        <p>El coste unitario se calcula como el costo operativo total dividido por la cantidad de servicios prestados. Si se estima atender 500 unidades de servicio al año:</p>
+        <p><strong>Coste Unitario:</strong> 240,000 € / 500 = 480 €/unidad</p>
     </div>
     <footer>
         <p>&copy; 2025 PIMA - Control de Especies Invasoras</p>
